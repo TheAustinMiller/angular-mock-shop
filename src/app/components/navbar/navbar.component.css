@@ -1,14 +1,12 @@
 .navbar-container {
     border: 3px solid black;
     padding: 20px;
-}
-
-.navbar-content {
     display: flex;
     justify-content: center;
-    gap: 90%;
+    gap: 85%;
 }
 
 h1 {
     margin: 0px;
+    line-height: 1.6;
 }
