@@ -1,7 +1,19 @@
 .card {
-    border: 2px solid black;
     padding: 20px;
-    max-width: fit-content;
-    background: rgb(231, 231, 231);
-    border-radius: 10px;
+    width: 240px;
+    min-height: 450px;
+    background: rgb(240, 240, 240);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+button {
+    margin-top: auto; 
+    align-self: center;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
 }
