@@ -1,8 +1,8 @@
 <div (click)="viewProductDetail()" class="card">
-    <img [src]="product.image" [alt]="product.title" style="width: 100px;">
+    <img [src]="product.image" [alt]="product.title">
     <div class="info-wrapper">
         <h4>{{ product.title }}</h4>
         <p>{{ product.price | currency }}</p>
-        <button>Add to Cart</button>
+        <button (click)="addToCart($event)">Add to Cart</button>
     </div>
 </div>

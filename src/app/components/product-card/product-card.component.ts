@@ -1,4 +1,4 @@
-import { Component, Input  } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Product } from 'src/app/core/product.model';
 import { Router } from '@angular/router';
 
@@ -9,10 +9,16 @@ import { Router } from '@angular/router';
 })
 export class ProductCardComponent {
   @Input() product!: Product;
-  
-  constructor(private router: Router) {}
+
+  constructor(private router: Router) { }
 
   viewProductDetail() {
     this.router.navigate(['/product', this.product.id]);
+  }
+
+  addToCart(event: Event) {
+    event.stopPropagation();
+
+    // this.cartService.addItem(this.product);
   }
 }
