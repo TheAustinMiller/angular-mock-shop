@@ -8,8 +8,7 @@
     flex-direction: column;
     border: 3px solid black;
     box-sizing: border-box;
-    transition: background-color 0.3s ease-in-out;
-    transition: transform 0.3s ease-in-out
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
 .card:hover {
