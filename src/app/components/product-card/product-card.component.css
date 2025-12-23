@@ -15,6 +15,7 @@
 .card:hover {
     background: lightgray;
     transform: scale(1.015);
+    cursor: pointer;
 }
 
 .info-wrapper {
