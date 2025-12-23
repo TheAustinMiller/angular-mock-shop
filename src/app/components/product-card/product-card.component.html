@@ -1,6 +1,8 @@
 <div class="card">
-  <img [src]="product.image" [alt]="product.title" style="width: 100px;">
-  <h3>{{ product.title }}</h3>
-  <p>{{ product.price | currency }}</p>
-  <button>Add to Cart</button>
+    <img [src]="product.image" [alt]="product.title" style="width: 100px;">
+    <div class="info-wrapper">
+        <h4>{{ product.title }}</h4>
+        <p>{{ product.price | currency }}</p>
+        <button>Add to Cart</button>
+    </div>
 </div>
