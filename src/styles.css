@@ -9,7 +9,7 @@ html, body {
 app-root {
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* Takes at least the full window height */
+    min-height: 100vh;
 }
 
 app-product-list, 
@@ -19,4 +19,11 @@ app-product-detail {
 
 * {
     box-sizing: border-box;
+}
+
+app-navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: block;
 }
