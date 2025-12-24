@@ -15,7 +15,7 @@
 
 img {
     flex: 1 1 300px;
-    max-width: 100%;
+    max-width: 400px;
     height: auto;
     object-fit: contain;
 }
@@ -23,7 +23,6 @@ img {
 .ratings-container {
     text-align: center;
     margin-top: 20px;
-    border-top: 2px solid #ddd;
     padding: 20px;
 }
 

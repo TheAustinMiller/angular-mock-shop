@@ -1,8 +1,20 @@
 html, body {
+    height: 100%;
     margin: 0;
     padding: 0;
     background: rgb(248, 248, 248);
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+app-root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Takes at least the full window height */
+}
+
+app-product-list, 
+app-product-detail {
+    flex: 1;
 }
 
 * {
