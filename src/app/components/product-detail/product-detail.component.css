@@ -1,0 +1,38 @@
+.product-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 60px;
+    align-items: center;
+    justify-content: center;
+    margin: 50px auto;
+    max-width: 1000px;
+    padding: 20px;
+}
+
+.info-container {
+    flex: 1 1 400px;
+}
+
+img {
+    flex: 1 1 300px;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.ratings-container {
+    text-align: center;
+    margin-top: 20px;
+    border-top: 2px solid #ddd;
+    padding: 20px;
+}
+
+button {
+    background-color: #007bff;
+    min-height: 30px;
+    min-width: 100px;
+    border-radius: 3px;
+    color: white;
+    border: none;
+    cursor: pointer;
+}

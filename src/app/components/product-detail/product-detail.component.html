@@ -1,1 +1,13 @@
-<p>product-detail works!</p>
+<div class="product-container">
+    <div class="info-container">
+        <h2>{{ product?.title }}</h2>
+        <h4 style="color: green;">{{ product?.price | currency }}</h4>
+        <p>{{ product?.description }}</p>
+        <button>Add to Cart</button>
+    </div>
+    <img [src]="product?.image">
+</div>
+
+<div class="ratings-container">
+    <h1> {{ product?.rating?.rate }} stars from {{ product?.rating?.count }} reviewers</h1>
+</div>
