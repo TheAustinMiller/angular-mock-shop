@@ -1,7 +1,12 @@
 <div class="hide"></div>
+
 <div class="navbar-container">
-    <div class="logo" (click)="returnHome()">
-        <h1>Mock Shop!</h1>
+    <h1 class="logo" (click)="returnHome()">Mock Shop!</h1>
+
+    <div class="cart-wrapper" (click)="goToCart()">
+        <img src="assets/images.png" class="cart-icon" alt="Cart">
+        <span class="badge" *ngIf="(cartCount$ | async) ?? 0 > 0">
+            {{ cartCount$ | async }}
+        </span>
     </div>
-    <input type="image" src="assets/images.png" height="60px;" width="auto" />
 </div>

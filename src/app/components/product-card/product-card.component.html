@@ -3,6 +3,6 @@
     <div class="info-wrapper">
         <h4>{{ product.title }}</h4>
         <p>{{ product.price | currency }}</p>
-        <button (click)="addToCart($event)">Add to Cart</button>
+        <button (click)="addToCart($event, product)">Add to Cart</button>
     </div>
 </div>
