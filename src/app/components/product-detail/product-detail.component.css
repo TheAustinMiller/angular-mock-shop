@@ -35,3 +35,27 @@ button {
     border: none;
     cursor: pointer;
 }
+
+.stars-outer {
+  display: inline-block;
+  position: relative;
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.stars-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  color: #ffc107;
+}
+
+.stars-empty {
+  color: #e4e4e4;
+}
+
+.ratings-container p {
+    color: gray;
+}

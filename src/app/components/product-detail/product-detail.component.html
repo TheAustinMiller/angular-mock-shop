@@ -9,5 +9,13 @@
 </div>
 
 <div class="ratings-container">
-    <h1> {{ product?.rating?.rate }} stars from {{ product?.rating?.count }} reviewers</h1>
+    <div class="stars-outer">
+        <div class="stars-inner" [style.width]="((product?.rating?.rate ?? 0) / 5) * 100 + '%'">
+            ★★★★★
+        </div>
+        <div class="stars-empty">
+            ★★★★★
+        </div>
+    </div>
+    <p> ({{product?.rating?.rate}} stars from {{product?.rating?.count}} reviewers)</p>
 </div>
