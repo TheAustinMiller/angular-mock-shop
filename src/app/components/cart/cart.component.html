@@ -1,1 +1,26 @@
-<p>cart works!</p>
+<div class="cart-page">
+  <h1>Your cart! ({{ count }})</h1>
+
+  <div class="product-list" *ngIf="items.length > 0; else emptyCart">
+    
+    <div *ngFor="let item of items" class="product-card">
+      <img [src]="item.image" alt="product" style="height: 50px;">
+      <div class="product-info">
+        <h3>{{ item.title }}</h3> <p>Price: {{ item.price | currency }}</p>
+      </div>
+      <button class="remove-btn">Remove</button>
+    </div>
+
+    <div class="cart-total">
+        <h3>Total: {{ calculateTotal() | currency }}</h3>
+        <button class="checkout-btn">Checkout Now</button>
+    </div>
+  </div>
+
+  <ng-template #emptyCart>
+    <div class="empty-state">
+      <p>Your cart is looking a bit lonely...</p>
+      <button routerLink="/">Go Shopping</button>
+    </div>
+  </ng-template>
+</div>
