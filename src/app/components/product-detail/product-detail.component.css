@@ -68,3 +68,8 @@ button.success {
 .ratings-container p {
     color: gray;
 }
+
+.category {
+    background: rgb(248, 248, 248);
+    color: gray;
+}
