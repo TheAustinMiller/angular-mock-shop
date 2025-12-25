@@ -17,6 +17,11 @@ export class CartService {
     console.log('Cart:', this.cartItems);
   }
 
+  removeItem(productId: number) {
+    this.cartItems = this.cartItems.filter(item => item.id !== productId);
+    this.cartCount.next(this.cartItems.length);
+  }
+
   getItems() {
     return this.cartItems;
   }

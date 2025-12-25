@@ -19,14 +19,19 @@
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 .product-title {
     margin: 0;
     font-size: 1rem;
-    flex-grow: 1; 
+    flex-grow: 1;
 }
 
 .remove-btn {
@@ -101,6 +106,10 @@ button {
     gap: 20px;
 }
 
+.product-card img:hover {
+    cursor: pointer;
+}
+
 @media (max-width: 600px) {
     .product-card {
         flex-direction: column;
@@ -119,7 +128,7 @@ button {
         border-top: 1px solid #eee;
         padding-top: 10px;
     }
-    
+
     .product-card img {
         height: 150px;
         align-self: center;

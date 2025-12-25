@@ -13,6 +13,7 @@ export class CartComponent {
   count = 0;
   cartCount$: Observable<number> | undefined;
   items: Product[] = [];
+  product: Product | undefined;
 
   constructor(private router: Router, private cartService: CartService) { this.cartCount$ = this.cartService.cartCount$; }
 
@@ -22,6 +23,15 @@ export class CartComponent {
     this.cartService.cartCount$.subscribe(val => {
       this.count = val;
     });
+  }
+
+  removeFromCart(productId: number) {
+    this.cartService.removeItem(productId);
+    this.items = this.cartService.getItems();
+  }
+
+  viewProductDetail(productId: number) {
+    this.router.navigate(['/product', productId]);
   }
 
   calculateTotal() {
