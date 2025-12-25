@@ -1,8 +1,6 @@
 <div class="cart-page">
-  <h1>Your cart! ({{ count }})</h1>
-
   <div class="product-list" *ngIf="items.length > 0; else emptyCart">
-    
+    <h1>Your cart! ({{ count }})</h1>
     <div *ngFor="let item of items" class="product-card">
       <img [src]="item.image" alt="product" style="height: 50px;">
       <div class="product-info">
@@ -19,7 +17,7 @@
 
   <ng-template #emptyCart>
     <div class="empty-state">
-      <p>Your cart is looking a bit lonely...</p>
+      <p><i>Your cart is looking a bit lonely...</i></p>
       <button routerLink="/">Go Shopping</button>
     </div>
   </ng-template>
