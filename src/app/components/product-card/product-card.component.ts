@@ -10,6 +10,7 @@ import { CartService } from 'src/app/core/cart.service';
 })
 export class ProductCardComponent {
   @Input() product!: Product;
+  isAdded: boolean = false;
 
   constructor(private router: Router, private cartService: CartService) { }
 
@@ -20,6 +21,9 @@ export class ProductCardComponent {
   addToCart(event: Event, product: Product) {
     event.stopPropagation();
     this.cartService.addToCart(product);
-    // this.cartService.addItem(this.product);
+    this.isAdded = true;
+    setTimeout(() => {
+      this.isAdded = false;
+    }, 1500);
   }
 }

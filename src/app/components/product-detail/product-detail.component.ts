@@ -11,6 +11,7 @@ import { ProductService } from 'src/app/core/product.service';
 })
 export class ProductDetailComponent {
   product: Product | undefined;
+  isAdded: boolean = false;
 
   constructor(
     private route: ActivatedRoute, private productService: ProductService, private cartService: CartService
@@ -31,6 +32,11 @@ export class ProductDetailComponent {
   addToCart(product: Product | undefined) {
     if (product) {
       this.cartService.addToCart(product);
+      this.isAdded = true;
+
+      setTimeout(() => {
+        this.isAdded = false;
+      }, 1500);
     }
   }
 }

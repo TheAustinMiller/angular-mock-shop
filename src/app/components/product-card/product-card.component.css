@@ -27,13 +27,17 @@
 }
 
 button {
-    background-color: #007bff;
-    min-height: 30px;
-    min-width: 100px;
-    border-radius: 3px;
+    padding: 10px 20px;
+    background-color: black;
     color: white;
     border: none;
     cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button.success {
+    background-color: green;
+    cursor: default;
 }
 
 img { 
