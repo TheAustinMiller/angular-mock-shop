@@ -2,7 +2,8 @@
     <div class="product-list" *ngIf="items.length > 0; else emptyCart">
         <h1>Your cart! ({{ count }})</h1>
         <div *ngFor="let item of items" class="product-card">
-            <img [src]="item.image" (click)="viewProductDetail(item.id)" alt="product" style="height: 100px; width: 80px; object-fit: contain;">
+            <img [src]="item.image" (click)="viewProductDetail(item.id)" alt="product"
+                style="height: 100px; width: 80px; object-fit: contain;">
 
             <div class="text-container">
                 <h3 class="product-title">{{ item.title }}</h3>
@@ -16,8 +17,23 @@
         </div>
 
         <div class="cart-total">
-            <h3>Total: {{ calculateTotal() | currency }}</h3>
-            <button routerLink='/checkout' class="checkout-btn">Checkout Now</button>
+            <div class="shipping-container">
+                <label for="shipping">Shipping: </label>
+                <select name="shipping" id="shipping" (change)="onShippingChange($event)">
+                    <option value="1.99">Standard</option>
+                    <option value="4.99">Expedited</option>
+                    <option value="9.99">Express</option>
+                </select>
+            </div>
+
+            <div class="total-container">
+                <div class="totals">
+                    <p>Sales Tax: {{ calculateTax() | currency }}</p>
+                    <p>Shipping: {{ shippingCost | currency }}</p>
+                    <h3>Total: {{ calculateFinalTotal() | currency }}</h3>
+                </div>
+                <button routerLink='/checkout' class="checkout-btn">Checkout Now</button>
+            </div>
         </div>
     </div>
 
