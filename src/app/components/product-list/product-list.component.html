@@ -1,6 +1,28 @@
+<div class="filter-container">
+  <div class="sort-container">
+    <label for="sortSelect">Sort: </label>
+    <select id="sortSelect" (change)="onSortChange($event)">
+      <option value="default">Default</option>
+      <option value="priceAsc">Price: Low to High</option>
+      <option value="priceDesc">Price: High to Low</option>
+      <option value="nameAsc">A - Z</option>
+      <option value="nameDesc">Z - A</option>
+    </select>
+  </div>
+
+  <div class="category-pills">
+    <button 
+      *ngFor="let cat of categories" 
+      [class.active]="selectedCategory === cat"
+      (click)="filterByCategory(cat)">
+      {{ cat | titlecase }}
+    </button>
+  </div>
+</div>
+
 <div class="product-grid">
   <app-product-card 
-    *ngFor="let item of products" 
+    *ngFor="let item of filteredProducts" 
     [product]="item">
   </app-product-card>
 </div>

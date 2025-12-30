@@ -9,12 +9,40 @@ import { ProductService } from 'src/app/core/product.service';
 })
 export class ProductListComponent implements OnInit {
   products: Product[] = [];
+  filteredProducts: Product[] = [];
+  categories: string[] = [];
+  selectedCategory: string = 'all';
 
   constructor(private productService: ProductService) { }
 
   ngOnInit() {
     this.productService.getProducts().subscribe((data) => {
       this.products = data;
+      this.filteredProducts = data;
+      const rawCategories = this.products.map(p => p.category);
+      this.categories = ['all', ...new Set(rawCategories)];
+    });
+  }
+
+  filterByCategory(category: string) {
+    this.selectedCategory = category;
+    
+    if (category === 'all') {
+      this.filteredProducts = [...this.products];
+    } else {
+      this.filteredProducts = this.products.filter(p => p.category === category);
+    }
+  }
+
+  onSortChange(event: any) {
+    const criteria = event.target.value;
+    this.filteredProducts.sort((a, b) => {
+      if (criteria === 'default') return a.id - b.id;
+      if (criteria === 'priceAsc') return a.price - b.price;
+      if (criteria === 'priceDesc') return b.price - a.price;
+      if (criteria === 'nameAsc') return a.title.localeCompare(b.title);
+      if (criteria === 'nameDesc') return b.title.localeCompare(a.title);
+      return 0;
     });
   }
 }
