@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { CartItem } from 'src/app/core/cart-item.model';
@@ -11,6 +11,7 @@ import { Product } from 'src/app/core/product.model';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent {
+  @ViewChild('shippingSelect') shippingSelect!: ElementRef;
   count = 0;
   cartCount$: Observable<number> | undefined;
   items: CartItem[] = [];
@@ -39,16 +40,20 @@ export class CartComponent {
   removeFromCart(productId: number) {
     this.cartService.removeItemCompletely(productId);
     this.items = this.cartService.getItems();
-}
+  }
 
   viewProductDetail(productId: number) {
     this.router.navigate(['/product', productId]);
   }
 
   onShippingChange(event: any) {
-    const selectedValue = event.target.value;
-    this.shippingCost = Number(selectedValue);
-    this.cartService.setShippingCost(this.shippingCost);
+    this.shippingCost = Number(event.target.value);
+  }
+
+  checkout() {
+    const finalShipping = Number(this.shippingSelect.nativeElement.value);
+    this.cartService.setShippingCost(finalShipping);
+    this.router.navigate(['/checkout']);
   }
 
   calculateTax() {
@@ -57,7 +62,7 @@ export class CartComponent {
 
   calculateSubtotal() {
     return this.items.reduce((acc, item) => acc + (item.product.price * item.quantity), 0);
-}
+  }
 
   calculateFinalTotal() {
     return this.calculateSubtotal() + this.calculateTax() + this.shippingCost;

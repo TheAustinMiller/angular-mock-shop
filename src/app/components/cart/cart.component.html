@@ -8,7 +8,7 @@
             <div class="text-container">
                 <h3 class="product-title">{{ item.product.title }}</h3>
                 <p class="product-description">{{ item.product.description }}</p>
-                
+
                 <div class="quantity-controls">
                     <button class="qty-btn" (click)="decreaseQuantity(item.product.id)">-</button>
                     <span class="qty-num">{{ item.quantity }}</span>
@@ -25,7 +25,8 @@
         <div class="cart-total">
             <div class="shipping-container">
                 <label for="shipping">Shipping: </label>
-                <select name="shipping" id="shipping" (change)="onShippingChange($event)">
+                <select #shippingSelect name="shipping" id="shipping" [value]="shippingCost"
+                    (change)="onShippingChange($event)">
                     <option value="1.99">Standard</option>
                     <option value="4.99">Expedited</option>
                     <option value="9.99">Express</option>
@@ -39,7 +40,7 @@
                     <p>Shipping: {{ shippingCost | currency }}</p>
                     <h3>Total: {{ calculateFinalTotal() | currency }}</h3>
                 </div>
-                <button routerLink='/checkout' class="checkout-btn">Checkout Now</button>
+                <button (click)="checkout()" class="checkout-btn">Checkout Now</button>
             </div>
         </div>
     </div>

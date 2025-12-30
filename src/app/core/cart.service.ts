@@ -13,12 +13,12 @@ export class CartService {
 
   cartCount$ = this.cartCount.asObservable();
 
-  getShippingCost() {
+  getShippingCost(): number {
     return this.shippingCost;
   }
 
-  setShippingCost(shipping: number) {
-    this.shippingCost = shipping;
+  setShippingCost(cost: number) {
+    this.shippingCost = cost;
   }
 
   addToCart(product: Product) {
