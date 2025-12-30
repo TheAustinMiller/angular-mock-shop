@@ -1,0 +1,154 @@
+.product-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    padding: 15px;
+    border: 2px solid black;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.product-card:hover .product-title {
+    display: none;
+}
+
+.product-card:hover .product-description {
+    display: block;
+    animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.product-title {
+    margin: 0;
+    font-size: 1rem;
+    flex-grow: 1;
+}
+
+.remove-btn {
+    flex-shrink: 0;
+}
+
+.product-actions {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 30px;
+    flex-shrink: 0;
+}
+
+.price {
+    margin: 0;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.wishlist-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+}
+
+.product-list {
+    width: 100%;
+    max-width: 800px;
+}
+
+.product-description {
+    display: none;
+    font-size: 0.75rem;
+    line-height: 1.2;
+    color: #444;
+    word-wrap: break-word;
+    margin: 0;
+    max-height: 80px;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
+
+.text-container {
+    flex-grow: 1;
+    min-height: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-basis: 0;
+    min-width: 0;
+    overflow: hidden;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: black;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 300px;
+    text-align: center;
+    gap: 20px;
+}
+
+.product-card img {
+    height: 100px;
+    width: 80px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.product-card img:hover {
+    cursor: pointer;
+}
+
+.product-card:hover .product-description {
+    display: block;
+    max-height: 80px; 
+    overflow-y: auto;
+}
+
+h3 {
+    margin: 5px;
+}
+
+@media (max-width: 600px) {
+    .product-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .product-title {
+        flex-grow: 0;
+        width: 100%;
+    }
+
+    .product-actions {
+        width: 100%;
+        justify-content: space-between;
+        border-top: 1px solid #eee;
+        padding-top: 10px;
+    }
+
+    .product-card img {
+        height: 150px;
+        align-self: center;
+    }
+}

@@ -12,10 +12,14 @@ import { WishlistService } from 'src/app/core/wishlist.service';
 export class NavbarComponent {
   count = 0;
   cartCount$: Observable<number> | undefined;
+  wishlistCount$: Observable<number> | undefined;
 
-  constructor(private router: Router, private cartService: CartService, private wishlistService: WishlistService) { this.cartCount$ = this.cartService.cartCount$; }
+  constructor(private router: Router, private cartService: CartService, private wishlistService: WishlistService) {
+    this.cartCount$ = this.cartService.cartCount$;
+    this.wishlistCount$ = this.wishlistService.wishlistCount$;
+  }
 
-  NgOnInit() {
+  ngOnInit() {
     this.cartService.cartCount$.subscribe(newCount => {
       this.count = newCount;
     })

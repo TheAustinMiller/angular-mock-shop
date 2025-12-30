@@ -6,6 +6,9 @@
     <div class="icons">
         <div class="icon-button" (click)="goToWishlist()">
             <img src="assets/heart.png" class="heart-icon" alt="Heart">
+            <span class="wishlist-badge" *ngIf="(wishlistCount$ | async) ?? 0 > 0">
+                {{ wishlistCount$ | async }}
+            </span>
         </div>
 
         <div class="cart-wrapper" (click)="goToCart()">
