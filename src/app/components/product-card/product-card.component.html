@@ -1,5 +1,10 @@
 <div (click)="viewProductDetail()" class="card">
-    <img [src]="product.image" [alt]="product.title" style="width: 100px;">
+    <button class="wishlist-btn" (click)="toggleWishlist($event, product)">
+        <img [src]="isWishlisted ? 'assets/heart-filled.png' : 'assets/heart.png'" alt="wishlist">
+    </button>
+
+    <img [src]="product.image" [alt]="product.title" class="product-img">
+    
     <div class="info-wrapper">
         <h4>{{ product.title }}</h4>
         <p>{{ product.price | currency }}</p>
