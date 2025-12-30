@@ -9,7 +9,7 @@ import { CartItem } from 'src/app/core/cart-item.model';
 })
 export class CheckoutComponent implements OnInit {
   items: CartItem[] = [];
-  orderNumber: number = Math.floor(Math.random() * 1000000);
+  orderNumber: number = 69;
   shippingType: string = 'Standard Shipping';
 
   constructor(private cartService: CartService) {
@@ -21,6 +21,7 @@ export class CheckoutComponent implements OnInit {
     } else {
       this.shippingType = 'Standard Shipping';
     }
+    this.orderNumber = cartService.getOrderNumber();
   }
 
   ngOnInit() {

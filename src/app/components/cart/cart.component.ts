@@ -52,8 +52,10 @@ export class CartComponent {
   }
 
   checkout() {
+    const orderNum: number = Math.floor(Math.random() * 1000000);
+    this.cartService.setOrderNumber(orderNum);
     const newOrder: Order = {
-      orderNumber: Math.floor(Math.random() * 1000000),
+      orderNumber: orderNum,
       date: new Date().toLocaleDateString(),
       items: this.items,
       subtotal: this.calculateSubtotal(),

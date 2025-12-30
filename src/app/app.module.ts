@@ -12,6 +12,7 @@ import { ProductDetailComponent } from './components/product-detail/product-deta
 import { CartComponent } from './components/cart/cart.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { WishlistComponent } from './components/wishlist/wishlist.component';
+import { OrdersComponent } from './components/orders/orders.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { WishlistComponent } from './components/wishlist/wishlist.component';
     ProductDetailComponent,
     CartComponent,
     CheckoutComponent,
-    WishlistComponent
+    WishlistComponent,
+    OrdersComponent
   ],
   imports: [
     BrowserModule,

@@ -12,8 +12,17 @@ export class CartService {
   private cartItems: CartItem[] = [];
   private cartCount = new BehaviorSubject<number>(0);
   private shippingCost = 1.99;
+  private orderNumber = 69;
 
   cartCount$ = this.cartCount.asObservable();
+
+  getOrderNumber(): number {
+    return this.orderNumber;
+  }
+
+  setOrderNumber(cost: number) {
+    this.orderNumber = cost;
+  }
 
   getShippingCost(): number {
     return this.shippingCost;
