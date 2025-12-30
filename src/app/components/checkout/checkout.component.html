@@ -12,6 +12,10 @@
         <hr>
         <div class="receipt">
             <div class="receipt-line">
+                <span>Subtotal</span>
+                <span>{{ calculateSubtotal() | currency }}</span>
+            </div>
+            <div class="receipt-line">
                 <span>Tax</span>
                 <span>{{ calculateTax() | currency }}</span>
             </div>

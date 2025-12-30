@@ -42,14 +42,14 @@ export class CartComponent {
   }
 
   calculateTax() {
-    return (this.calculateTotal() * 0.055);
+    return (this.calculateSubtotal() * 0.055);
   }
 
-  calculateTotal() {
+  calculateSubtotal() {
     return this.items.reduce((acc, item) => acc + item.price, 0);
   }
 
   calculateFinalTotal() {
-    return this.calculateTotal() + this.calculateTax() + this.shippingCost;
+    return this.calculateSubtotal() + this.calculateTax() + this.shippingCost;
   }
 }

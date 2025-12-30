@@ -21,15 +21,15 @@ export class CheckoutComponent {
     return this.cartService.getShippingCost();
   }
 
-  calculateTotal() {
+  calculateSubtotal() {
     return this.items.reduce((acc, item) => acc + item.price, 0);
   }
 
   calculateTax() {
-    return (this.calculateTotal() * 0.055);
+    return (this.calculateSubtotal() * 0.055);
   }
 
   calculateFinalTotal() {
-    return this.calculateTotal() + this.calculateTax() + this.getShippingCost();
+    return this.calculateSubtotal() + this.calculateTax() + this.getShippingCost();
   }
 }

@@ -28,6 +28,7 @@
 
             <div class="total-container">
                 <div class="totals">
+                    <p>Subtotal: {{ calculateSubtotal() | currency }}</p>
                     <p>Sales Tax: {{ calculateTax() | currency }}</p>
                     <p>Shipping: {{ shippingCost | currency }}</p>
                     <h3>Total: {{ calculateFinalTotal() | currency }}</h3>
