@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { CartItem } from 'src/app/core/cart-item.model';
 import { CartService } from 'src/app/core/cart.service';
 import { Product } from 'src/app/core/product.model';
 
@@ -12,7 +13,7 @@ import { Product } from 'src/app/core/product.model';
 export class CartComponent {
   count = 0;
   cartCount$: Observable<number> | undefined;
-  items: Product[] = [];
+  items: CartItem[] = [];
   product: Product | undefined;
   shippingCost: number = 1.99;
 
@@ -20,16 +21,25 @@ export class CartComponent {
 
   ngOnInit() {
     this.items = this.cartService.getItems();
+    this.cartService.cartCount$.subscribe(c => this.count = c);
+  }
 
-    this.cartService.cartCount$.subscribe(val => {
-      this.count = val;
-    });
+  increaseQuantity(productId: number) {
+    this.cartService.updateQuantity(productId, 1);
+  }
+
+  decreaseQuantity(productId: number) {
+    if (this.items.find(i => i.product.id === productId)?.quantity === 1) {
+      this.removeFromCart(productId);
+      return;
+    }
+    this.cartService.updateQuantity(productId, -1);
   }
 
   removeFromCart(productId: number) {
-    this.cartService.removeItem(productId);
+    this.cartService.removeItemCompletely(productId);
     this.items = this.cartService.getItems();
-  }
+}
 
   viewProductDetail(productId: number) {
     this.router.navigate(['/product', productId]);
@@ -46,8 +56,8 @@ export class CartComponent {
   }
 
   calculateSubtotal() {
-    return this.items.reduce((acc, item) => acc + item.price, 0);
-  }
+    return this.items.reduce((acc, item) => acc + (item.product.price * item.quantity), 0);
+}
 
   calculateFinalTotal() {
     return this.calculateSubtotal() + this.calculateTax() + this.shippingCost;

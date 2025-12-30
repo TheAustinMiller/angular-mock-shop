@@ -1,23 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CartService } from 'src/app/core/cart.service';
-import { Product } from 'src/app/core/product.model';
+import { CartItem } from 'src/app/core/cart-item.model';
 
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
   styleUrls: ['./checkout.component.css']
 })
-export class CheckoutComponent {
-  items: Product[] = [];
-  orderNumber: number = Math.floor(Math.random() * 100000);
+export class CheckoutComponent implements OnInit {
+  items: CartItem[] = [];
+  orderNumber: number = Math.floor(Math.random() * 1000000);
   shippingType: string = 'Standard Shipping';
 
   constructor(private cartService: CartService) {
-    if (this.getShippingCost() === 4.99) {
+    const cost = this.getShippingCost();
+    if (cost === 4.99) {
       this.shippingType = 'Expedited Shipping';
-    }
-    if (this.getShippingCost() === 9.99) {
+    } else if (cost === 9.99) {
       this.shippingType = 'Express Shipping';
+    } else {
+      this.shippingType = 'Standard Shipping';
     }
   }
 
@@ -30,7 +32,7 @@ export class CheckoutComponent {
   }
 
   calculateSubtotal() {
-    return this.items.reduce((acc, item) => acc + item.price, 0);
+    return this.items.reduce((acc, item) => acc + (item.product.price * item.quantity), 0);
   }
 
   calculateTax() {

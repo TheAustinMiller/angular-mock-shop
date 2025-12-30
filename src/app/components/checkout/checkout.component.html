@@ -6,8 +6,8 @@
 
     <div class="receipt-body">
         <div *ngFor="let item of items" class="receipt-line">
-            <span>{{ item.title.substring(0, 15) }}...</span>
-            <span>{{ item.price | currency }}</span>
+            <span>{{ item.product.title.substring(0, 15) }}...</span>
+            <span>{{ item.product.price | currency }}</span>
         </div>
         <hr>
         <div class="receipt">

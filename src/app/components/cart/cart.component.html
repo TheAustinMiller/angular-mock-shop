@@ -2,17 +2,23 @@
     <div class="product-list" *ngIf="items.length > 0; else emptyCart">
         <h1>Your cart! ({{ count }})</h1>
         <div *ngFor="let item of items" class="product-card">
-            <img [src]="item.image" (click)="viewProductDetail(item.id)" alt="product"
+            <img [src]="item.product.image" (click)="viewProductDetail(item.product.id)" alt="product"
                 style="height: 100px; width: 80px; object-fit: contain;">
 
             <div class="text-container">
-                <h3 class="product-title">{{ item.title }}</h3>
-                <p class="product-description">{{ item.description }}</p>
+                <h3 class="product-title">{{ item.product.title }}</h3>
+                <p class="product-description">{{ item.product.description }}</p>
+                
+                <div class="quantity-controls">
+                    <button class="qty-btn" (click)="decreaseQuantity(item.product.id)">-</button>
+                    <span class="qty-num">{{ item.quantity }}</span>
+                    <button class="qty-btn" (click)="increaseQuantity(item.product.id)">+</button>
+                </div>
             </div>
 
             <div class="product-actions">
-                <p class="price">{{ item.price | currency }}</p>
-                <button class="remove-btn" (click)="removeFromCart(item.id)">Remove</button>
+                <p class="price">{{ (item.product.price * item.quantity) | currency }}</p>
+                <button class="remove-btn" (click)="removeFromCart(item.product.id)">Remove</button>
             </div>
         </div>
 
