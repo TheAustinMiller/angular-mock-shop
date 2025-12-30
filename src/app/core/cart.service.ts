@@ -23,7 +23,6 @@ export class CartService {
   addToCart(product: Product) {
     this.cartItems.push(product);
     this.cartCount.next(this.cartItems.length);
-    console.log('Cart:', this.cartItems);
   }
 
   removeItem(productId: number) {
