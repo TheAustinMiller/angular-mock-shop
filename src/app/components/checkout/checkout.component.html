@@ -20,7 +20,7 @@
                 <span>{{ calculateTax() | currency }}</span>
             </div>
             <div class="receipt-line">
-                <span>Shipping</span>
+                <span>{{ shippingType }}</span>
                 <span>{{ getShippingCost() | currency }}</span>
             </div>
             <div class="receipt-line total">

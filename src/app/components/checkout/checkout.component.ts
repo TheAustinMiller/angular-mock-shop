@@ -10,8 +10,16 @@ import { Product } from 'src/app/core/product.model';
 export class CheckoutComponent {
   items: Product[] = [];
   orderNumber: number = Math.floor(Math.random() * 100000);
+  shippingType: string = 'Standard Shipping';
 
-  constructor(private cartService: CartService) { }
+  constructor(private cartService: CartService) {
+    if (this.getShippingCost() === 4.99) {
+      this.shippingType = 'Expedited Shipping';
+    }
+    if (this.getShippingCost() === 9.99) {
+      this.shippingType = 'Express Shipping';
+    }
+  }
 
   ngOnInit() {
     this.items = this.cartService.getItems();
