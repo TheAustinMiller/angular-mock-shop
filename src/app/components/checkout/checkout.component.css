@@ -1,0 +1,34 @@
+.receipt {
+    background: white;
+    border: 2px dashed black;
+    padding: 30px;
+    font-family: 'Courier New', Courier, monospace;
+    max-width: 400px;
+    margin: 20px auto;
+    box-shadow: 10px 10px 0px black;
+}
+
+.receipt-header {
+    text-align: center;
+    border-bottom: 2px solid black;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+}
+
+.receipt-line {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 0;
+}
+
+.barcode-container svg {
+    filter: contrast(150%) brightness(90%);
+    opacity: 0.9;
+}
+
+.barcode-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}

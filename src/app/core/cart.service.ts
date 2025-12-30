@@ -8,8 +8,17 @@ import { BehaviorSubject } from 'rxjs';
 export class CartService {
   private cartItems: Product[] = [];
   private cartCount = new BehaviorSubject<number>(0);
+  private shippingCost = 1.99;
 
   cartCount$ = this.cartCount.asObservable();
+
+  getShippingCost() {
+    return this.shippingCost;
+  }
+
+  setShippingCost(shipping: number) {
+    this.shippingCost = shipping;
+  }
 
   addToCart(product: Product) {
     this.cartItems.push(product);

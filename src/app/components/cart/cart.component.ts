@@ -14,7 +14,7 @@ export class CartComponent {
   cartCount$: Observable<number> | undefined;
   items: Product[] = [];
   product: Product | undefined;
-  shippingCost: number = 0;
+  shippingCost: number = 1.99;
 
   constructor(private router: Router, private cartService: CartService) { this.cartCount$ = this.cartService.cartCount$; }
 
@@ -38,6 +38,7 @@ export class CartComponent {
   onShippingChange(event: any) {
     const selectedValue = event.target.value;
     this.shippingCost = Number(selectedValue);
+    this.cartService.setShippingCost(this.shippingCost);
   }
 
   calculateTax() {
