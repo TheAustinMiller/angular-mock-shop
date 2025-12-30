@@ -1,23 +1,24 @@
 import { Injectable } from '@angular/core';
-import { Product } from './product.model';
 import { BehaviorSubject } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
 export class WishlistService {
-  private wishlistItems: Product[] = [];
-  private wishlistCount = new BehaviorSubject<number>(0);
+  private wishlistIds: number[] = [];
+  private wishlistSubject = new BehaviorSubject<number[]>([]);
 
-  wishlistCount$ = this.wishlistCount.asObservable();
+  wishlist$ = this.wishlistSubject.asObservable();
 
-  addToWishlist(product: Product) {
-    this.wishlistItems.push(product);
-    this.wishlistCount.next(this.wishlistItems.length);
+  toggleWishlist(productId: number) {
+    const index = this.wishlistIds.indexOf(productId);
+    if (index > -1) {
+      this.wishlistIds.splice(index, 1);
+    } else {
+      this.wishlistIds.push(productId);
+    }
+    this.wishlistSubject.next([...this.wishlistIds]);
   }
 
-  removeItem(productId: number) {
-    this.wishlistItems = this.wishlistItems.filter(item => item.id !== productId);
-    this.wishlistCount.next(this.wishlistItems.length);
+  isItemWishlisted(productId: number): boolean {
+    return this.wishlistIds.includes(productId);
   }
 }

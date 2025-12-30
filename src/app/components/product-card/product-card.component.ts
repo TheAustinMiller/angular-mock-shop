@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Product } from 'src/app/core/product.model';
 import { Router } from '@angular/router';
 import { CartService } from 'src/app/core/cart.service';
@@ -9,22 +9,32 @@ import { WishlistService } from 'src/app/core/wishlist.service';
   templateUrl: './product-card.component.html',
   styleUrls: ['./product-card.component.css']
 })
-export class ProductCardComponent {
+export class ProductCardComponent implements OnInit {
   @Input() product!: Product;
   isAdded: boolean = false;
   isWishlisted: boolean = false;
 
-  constructor(private router: Router, private cartService: CartService, private wishlistService: WishlistService) { }
+  constructor(
+    private router: Router, 
+    private cartService: CartService, 
+    private wishlistService: WishlistService
+  ) { }
+
+  ngOnInit(): void {
+    this.isWishlisted = this.wishlistService.isItemWishlisted(this.product.id);
+    this.wishlistService.wishlist$.subscribe(ids => {
+      this.isWishlisted = ids.includes(this.product.id);
+    });
+  }
 
   viewProductDetail() {
     this.router.navigate(['/product', this.product.id]);
   }
 
-  toggleWishlist(event: Event, product: any) {
+  toggleWishlist(event: Event, product: Product) {
     event.stopPropagation();
-    this.isWishlisted = !this.isWishlisted;
-    this.wishlistService.addToWishlist(product);
-}
+    this.wishlistService.toggleWishlist(product.id);
+  }
 
   addToCart(event: Event, product: Product) {
     event.stopPropagation();

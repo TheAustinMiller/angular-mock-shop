@@ -4,9 +4,17 @@
         <h2>{{ product?.title }}</h2>
         <h4 style="color: green;">{{ product?.price | currency }}</h4>
         <p>{{ product?.description }}</p>
-        <button (click)="addToCart(product)" [class.success]="isAdded" [disabled]="isAdded">
-            {{ isAdded ? 'Added!' : 'Add to Cart' }}
-        </button>
+        
+        <div class="action-buttons">
+            <button (click)="addToCart(product)" [class.success]="isAdded" [disabled]="isAdded">
+                {{ isAdded ? 'Added!' : 'Add to Cart' }}
+            </button>
+
+            <button class="detail-wishlist-btn" (click)="toggleWishlist()">
+                <img [src]="isWishlisted ? 'assets/heart-filled.png' : 'assets/heart.png'" alt="wishlist">
+                <span>{{ isWishlisted ? 'Saved' : 'Save to Wishlist' }}</span>
+            </button>
+        </div>
     </div>
     <img [src]="product?.image">
 </div>
