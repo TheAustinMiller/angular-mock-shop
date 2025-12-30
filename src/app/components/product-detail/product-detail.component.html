@@ -1,10 +1,12 @@
 <div class="product-container">
     <div class="info-container">
-        <button routerLink="/" class="category"> {{product?.category?.toUpperCase()}} </button>
+        <button routerLink="/" [queryParams]="{ category: product?.category }" class="category">
+            {{ product?.category?.toUpperCase() }}
+        </button>
         <h2>{{ product?.title }}</h2>
         <h4 style="color: green;">{{ product?.price | currency }}</h4>
         <p>{{ product?.description }}</p>
-        
+
         <div class="action-buttons">
             <button (click)="addToCart(product)" [class.success]="isAdded" [disabled]="isAdded">
                 {{ isAdded ? 'Added!' : 'Add to Cart' }}
