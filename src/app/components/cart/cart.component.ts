@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { CartItem } from 'src/app/core/cart-item.model';
 import { CartService } from 'src/app/core/cart.service';
+import { Order } from 'src/app/core/order.model';
 import { Product } from 'src/app/core/product.model';
 
 @Component({
@@ -51,6 +52,16 @@ export class CartComponent {
   }
 
   checkout() {
+    const newOrder: Order = {
+      orderNumber: Math.floor(Math.random() * 1000000),
+      date: new Date().toLocaleDateString(),
+      items: this.items,
+      subtotal: this.calculateSubtotal(),
+      tax: this.calculateTax(),
+      shipping: this.shippingCost,
+      total: this.calculateFinalTotal()
+    };
+    this.cartService.saveOrder(newOrder);
     const finalShipping = Number(this.shippingSelect.nativeElement.value);
     this.cartService.setShippingCost(finalShipping);
     this.router.navigate(['/checkout']);

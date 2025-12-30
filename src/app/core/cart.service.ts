@@ -2,11 +2,13 @@ import { Injectable } from '@angular/core';
 import { Product } from './product.model';
 import { BehaviorSubject } from 'rxjs';
 import { CartItem } from './cart-item.model';
+import { Order } from './order.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
+  private STORAGE_KEY = 'my_shop_orders';
   private cartItems: CartItem[] = [];
   private cartCount = new BehaviorSubject<number>(0);
   private shippingCost = 1.99;
@@ -57,6 +59,17 @@ export class CartService {
   removeItem(productId: number) {
     this.cartItems = this.cartItems.filter(item => item.product.id !== productId);
     this.updateCartCount();
+  }
+
+  saveOrder(order: Order) {
+    const existingOrders = this.getHistory();
+    existingOrders.unshift(order);
+    localStorage.setItem(this.STORAGE_KEY, JSON.stringify(existingOrders));
+  }
+
+  getHistory(): Order[] {
+    const saved = localStorage.getItem(this.STORAGE_KEY);
+    return saved ? JSON.parse(saved) : [];
   }
 
   getItems(): CartItem[] {
