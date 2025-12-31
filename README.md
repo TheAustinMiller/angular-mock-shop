@@ -1,4 +1,5 @@
 # MockShop
+This is my take on a simplistic storefront using all the best of what Angular has to offer. Multiple components, parent/child relationships, and effective use of routing is all over. Fun to play with and has no limit for further features that could be implemented.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.0.
 
