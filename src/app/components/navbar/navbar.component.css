@@ -97,7 +97,7 @@ input[type="image"] {
 .wishlist-badge {
     position: absolute;
     top: 5px;
-    right: 78px;
+    right: 140px;
     background-color: red;
     color: white;
     width: 22px;
